@@ -1,16 +1,19 @@
 import "dotenv/config";
 import express from "express";
-import productsRouter from './src/routes/products.router.js'
-
 const app = express();
 
-app.get('/', (req, res)=>{
-    res.json({message:"Bienvenido a la API REST!!"});
-})
+app.use(express.json());
 
-// http://localhost:3000/api/products
-app.use("api",productsRouter);
+app.get("/", (req, res) => {
+  res.json({ message: "Bienvenidos a la API REST" });
+});
+
+import productsRouter from "./src/routes/products.router.js";
+app.use("/api", productsRouter);
+
+import authRouter from "./src/routes/auth.router.js";
+app.use("/api/auth", authRouter);
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT}`))
+app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
