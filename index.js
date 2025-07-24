@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import productsRouter from './src/routes/products.router.js'
 
@@ -10,6 +11,6 @@ app.get('/', (req, res)=>{
 // http://localhost:3000/api/products
 app.use("api",productsRouter);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))

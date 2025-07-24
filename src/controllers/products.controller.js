@@ -1,7 +1,7 @@
 import * as Service from "../services/products.service.js"
 
 //Exportamos la funcion
-export const getAllProducts = (req,res)=>{
-    const products = Service.getAllProducts();
+export const getAllProducts = async (req,res)=>{
+    const products = await Service.getAllProducts();
     res.json(products);
 };
