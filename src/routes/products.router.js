@@ -1,9 +1,23 @@
 import { Router } from "express";
-import { getAllProducts } from "../controllers/products.controller.js";
-
 const router = Router();
 
-//Va a haber un controlador llamado getAllProducts
-router.get('/products', getAllProducts);
+import {
+  getAllProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} from "../controllers/products.controller.js";
+
+import { auth } from "../middlewares/auth.middleware.js";
+
+router.get("/products", getAllProducts);
+router.get("/products/:id", getProductById);
+
+router.post("/products", auth, createProduct);
+
+router.put("/products/:id", auth, updateProduct);
+
+router.delete("/products/:id", auth, deleteProduct);
 
 export default router;
