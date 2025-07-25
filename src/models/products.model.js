@@ -12,6 +12,7 @@ import {
 
 const productsCollection = collection(db, "products");
 
+//Obtengo todos los productos
 export const getAllProducts = async () => {
   try {
     const snapshot = await getDocs(productsCollection);
@@ -25,6 +26,7 @@ export const getAllProducts = async () => {
   }
 };
 
+//Obtengo un producto por el Id
 export const getProductById = async (id) => {
   try {
     const docRef = doc(productsCollection, id);
@@ -39,6 +41,7 @@ export const getProductById = async (id) => {
   }
 };
 
+//Creo un nuevo producto
 export const createProduct = async (newProduct) => {
   try {
     const docRef = await addDoc(productsCollection, newProduct);
@@ -48,6 +51,7 @@ export const createProduct = async (newProduct) => {
   }
 };
 
+//Actualizo un producto existente
 export const updateProduct = async (id, updatedProductData) => {
   try {
     const docRef = doc(productsCollection, id);
@@ -59,6 +63,7 @@ export const updateProduct = async (id, updatedProductData) => {
   }
 };
 
+//Elimino un producto
 export const deleteProduct = async (id) => {
   try {
     const docRef = doc(productsCollection, id);
@@ -67,5 +72,19 @@ export const deleteProduct = async (id) => {
   } catch (error) {
     console.error(error);
     return false;
+  }
+};
+
+//Obtengo productos que contienen una categoría
+export const getProductsByCategory = async (category) => {
+  try {
+    const snapshot = await getDocs(productsCollection);
+    const products = snapshot.docs
+      .map((doc) => ({ id: doc.id, ...doc.data() }))
+      .filter((product) => Array.isArray(product.categories) && product.categories.includes(category));
+    return products;
+  } catch (error) {
+    console.error(error);
+    return [];
   }
 };
