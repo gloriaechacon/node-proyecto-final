@@ -19,8 +19,3 @@ export const updateProduct = async (id, updatedProductData) => {
 export const deleteProduct = async (id) => {
   return await Model.deleteProduct(id);
 };
-
-//Obtengo productos por categoría
-export const getProductsByCategory = async (category) => {
-  return await Model.getProductsByCategory(category);
-}

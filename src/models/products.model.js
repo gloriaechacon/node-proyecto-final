@@ -74,17 +74,3 @@ export const deleteProduct = async (id) => {
     return false;
   }
 };
-
-//Obtengo productos que contienen una categoría
-export const getProductsByCategory = async (category) => {
-  try {
-    const snapshot = await getDocs(productsCollection);
-    const products = snapshot.docs
-      .map((doc) => ({ id: doc.id, ...doc.data() }))
-      .filter((product) => Array.isArray(product.categories) && product.categories.includes(category));
-    return products;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};

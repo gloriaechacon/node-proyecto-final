@@ -48,10 +48,3 @@ export const deleteProduct = async (req, res) => {
     res.status(404).json({ message: "Product not found" });
   }
 };
-
-//Busco productos por categoría
-export const getProductsByCategory = async (req, res) => {
-  const { category } = req.params;
-  const products = await Service.getProductsByCategory(category);
-  res.json(products);
-};
