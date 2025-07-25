@@ -2,6 +2,8 @@
 import "dotenv/config";
 //Importa Express
 import express from "express";
+//Importa Cors
+import cors from "cors";
 const app = express();
 
 //Habilita CORS para permitir solicitudes de otros orígenes

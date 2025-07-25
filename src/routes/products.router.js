@@ -6,8 +6,7 @@ import {
   getProductById,
   createProduct,
   updateProduct,
-  deleteProduct,
-  getProductsByCategory, // Import the new controller
+  deleteProduct
 } from "../controllers/products.controller.js";
 
 import { auth } from "../middlewares/auth.middleware.js";
