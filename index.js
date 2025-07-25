@@ -11,7 +11,7 @@ app.use(express.json());
 
 //Ruta principal de bienvenida
 app.get("/", (req, res) => {
-  res.json({ message: "Bienvenidos a la API REST" });
+  res.json({ message: "API REST productos" });
 });
 
 //Rutas de productos
